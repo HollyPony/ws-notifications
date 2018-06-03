@@ -1,0 +1,31 @@
+{
+  "name": "ws-notifications",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "ws": "^5.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HollyPony/ws-notifications.git"
+  },
+  "keywords": [
+    "ws"
+  ],
+  "author": "Arthur Agombart",
+  "license": "Unlicense",
+  "bugs": {
+    "url": "https://github.com/HollyPony/ws-notifications/issues"
+  },
+  "homepage": "https://github.com/HollyPony/ws-notifications#readme",
+  "optionalDependencies": {
+    "bufferutil": "^3.0.5",
+    "utf-8-validate": "^4.0.2"
+  }
+}
