@@ -1,15 +1,20 @@
-const WebSocket = require('ws');
+var io = require('socket.io')(3333);
 
-const wss = new WebSocket.Server({ port: 3333 });
+io.on('connection', socket => {
+  socket.on('disconnect', reason => {
+    console.log(`${socket.id} disconnected because ${reason}`)
+  })
+  console.log(`${socket.id} is connected with token: ${socket.handshake.query['token']}`)
+  socket.emit('message', { hello: 'world' })
+  socket.on('ask', (data) => {
+    console.log('ask called', data)
+  })
 
-wss.on('connection', function connection(ws) {
-  console.log('there is a connection')
-  ws.on('message', function incoming(message) {
-    console.log('received:', message);
-
-    ws.send('response')
-  });
-
-  ws.send('something')
-});
-console.log('server is listenning')
+  const interval = setInterval(() => {
+    if (socket.connected) {
+      socket.emit('message', { hello: 'ping' })
+    } else {
+      clearInterval(interval)
+    }
+  }, 2500)
+})
